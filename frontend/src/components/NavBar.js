@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
 
-const NavBar = ({ recipeCount, onAddClick }) => {
+const NavBar = ({ recipeCount }) => {
   return (
     <nav className="nav">
-      <div className="logo">
+      <Link to="/" className="logo">
         Recipe<span className="logo-accent">.</span>Vault
-      </div>
+      </Link>
       <div className="nav-right">
         <span className="nav-count">{recipeCount} recipes saved</span>
-        <button className="add-btn" onClick={onAddClick}>
+        <Link to="/create" className="add-btn">
           + New Recipe
-        </button>
+        </Link>
       </div>
     </nav>
   )

@@ -26,16 +26,19 @@ const getRecipe = async (req, res) => {
 
 // create a new recipe
 const createRecipe = async (req, res) => {
-    const { title, ingredients, instructions, cookTime, servingSize } = req.body
+    const { title, source, description, ingredients, instructions, steps, cookTime, servingSize } = req.body
 
     try {
         const recipe = await Recipe.create({
             title,
+            source,
+            description,
             ingredients,
             instructions,
+            steps,
             cookTime,
             servingSize
-        })
+})
         res.status(200).json(recipe)
     } catch (error) {
         res.status(400).json({ error: error.message })

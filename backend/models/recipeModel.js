@@ -6,33 +6,55 @@ const recipeSchema = new Schema({
         type: String,
         required: true
     },
-    ingredients: [{
-    name: {
-        type: String,
-        required: true
-    },
-    amount: {
+    source: {
         type: String,
         required: false,
         default: ''
     },
-    have: {
-        type: Boolean,
-        default: false
-    }
-}],
+    description: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    ingredients: [{
+        name: {
+            type: String,
+            required: true
+        },
+        quantity: {
+            type: String,
+            required: false,
+            default: ''
+        },
+        have: {
+            type: Boolean,
+            default: false
+        }
+    }],
     instructions: {
         type: String,
         required: true
     },
     cookTime: {
         type: Number,
-        required: true
+        required: false,
+        default: 0
     },
     servingSize: {
         type: Number,
-        required: true
-    }
+        required: false,
+        default: 0
+    },
+    steps: [{
+        text: {
+            type: String,
+            required: true
+        },
+        completed: {
+            type: Boolean,
+            default: false
+        }
+    }]
 }, { timestamps: true })
 
 module.exports = mongoose.model('Recipe', recipeSchema)
